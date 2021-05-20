@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->string('term')->nullable();
             $table->string('day')->nullable();
             $table->string('time')->nullable();
+            $table->string('state')->nullable();
             $table->timestamps();
         });
     }

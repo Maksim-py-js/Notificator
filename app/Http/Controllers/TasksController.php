@@ -20,19 +20,28 @@ class TasksController extends Controller
         $data = [];
         foreach($tasks as $task) {
             $files = $task->files('task')->get();
-            $users = $task->users('user')->get();
 
-            $workplaces = $task->workplaces('workplace')->get();
-            $worplace_users = [];
-            foreach($workplaces as $workplace) {
-                $user = User::find($workplace->id);
-                array_push($worplace_users, $user);
+            $data_users = $task->users('user')->get();
+            $data_workplaces = $task->workplaces('workplace')->get();
+            $users = [];
+
+            foreach($data_users as $data_user) {
+                $user = User::find($data_user->user);
+                if (!in_array($user, $users)) {                    
+                    array_push($users, $user);
+                }
             }
+            foreach($data_workplaces as $data_workplace) {
+                $user = User::find($data_workplace->id);
+                if (!in_array($user, $users)) {                    
+                    array_push($users, $user);
+                }
+            }
+
             array_push($data, compact(
                 'task',
                 'files',
-                'users',
-                'worplace_users'
+                'users'
             ));
         }
         return json_encode($data);
@@ -52,6 +61,7 @@ class TasksController extends Controller
         $task->term = $request['term'];
         $task->day = $request['day'];
         $task->time = $request['time'];
+        $task->state = $request['state'];
         $task->save();
         return $task;
     }
@@ -89,6 +99,7 @@ class TasksController extends Controller
         $task->term = $request['term'];
         $task->day = $request['day'];
         $task->time = $request['time'];
+        $task->state = $request['state'];
         $task->save();
         return $task;
     }
