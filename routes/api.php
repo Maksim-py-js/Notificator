@@ -46,6 +46,8 @@ Route::group(['middleware' => 'guest:api'], function () {
 });
 Route::apiResource('users', 'App\Http\Controllers\Auth\UserController');
 
+Route::post('/users/moderators', [UserController::class, 'getModerators']);
+
 Route::apiResource('workplaces', 'App\Http\Controllers\WorkplacesController');
 Route::apiResource('jobs', 'App\Http\Controllers\JobsController');
 

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Workplace;
 use App\Models\Job;
 use App\Models\Group;
+use App\Models\Task;
 
 class UserController extends Controller
 {
@@ -37,11 +38,19 @@ class UserController extends Controller
                 array_push($groups, $userGroup);
             }
 
+            $tasks = [];
+            $data_tasks = $user->tasks('user')->get();
+            foreach($data_tasks as $data_task) {
+                $task = Task::find($data_task->user);
+                array_push($tasks, $task);
+            }
+
             array_push($data, compact(
                 'user',
                 'workplace',
                 'job',
-                'groups'
+                'groups',
+                'tasks'
             ));
         }
         return json_encode($data);
@@ -139,5 +148,10 @@ class UserController extends Controller
         } else {
             return "This user was deleted erlier";
         }
+    }
+    public function getModerators(Request $request) {
+        return 'its work';
+        $users = DB::table('users')->where('role', '=', $request->role)->get();
+        return response()->json($users);
     }
 }
