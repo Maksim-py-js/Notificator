@@ -121,4 +121,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     public function groups() {
         return $this->hasMany('App\Models\GroupUser', 'user');
     }
+    public function tasks() {
+        return $this->hasMany('App\Models\TaskWorkplaceUser', 'user');
+    }
 }
