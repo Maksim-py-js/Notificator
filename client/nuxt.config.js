@@ -34,7 +34,9 @@ module.exports = {
   },
 
   css: [
-    { src: '~assets/sass/app.scss', lang: 'scss' }
+    { src: '~assets/sass/app.scss', lang: 'scss' },
+    '../styles/index.css',
+    '../styles/main.css'
   ],
 
   plugins: [
@@ -44,15 +46,28 @@ module.exports = {
     '~plugins/axios',
     '~plugins/fontawesome',
     '~plugins/nuxt-client-init',
-    { src: '~plugins/bootstrap', mode: 'client' }
+    { src: '~plugins/bootstrap', mode: 'client' },
+
+    { src: '~/plugins/TiptapVuetify', mode: 'client' }
   ],
 
   modules: [
-    '@nuxtjs/router'
+    '@nuxtjs/router',
+    'bootstrap-vue/nuxt',
+    "@nuxtjs/vuetify"
+  ],
+
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    // Iconfonts for Vuetify. You need to leave only which one you use
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' },
+    { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css' },
+    { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.4.95/css/materialdesignicons.min.css' }
   ],
 
   build: {
-    extractCSS: true
+    extractCSS: true,
+    transpile: ['vuetify/lib', 'tiptap-vuetify']
   },
 
   hooks: {

@@ -7,7 +7,41 @@ Vue.use(Router)
 const page = path => () => import(`~/pages/${path}`).then(m => m.default || m)
 
 const routes = [
-  { path: '/', name: 'welcome', component: page('welcome.vue') },
+  {
+    path: '/',
+    component: page('index.vue'),
+    name: 'main',
+    children: [
+      { 
+        path: '/assignments', 
+        name: 'assignments', 
+        component: page('mainPage/assignments.vue') 
+      },
+      { 
+        path: '/contacts', 
+        name: 'contacts', 
+        component: page('mainPage/contacts.vue') 
+      },
+      { 
+        path: '/notifications', 
+        name: 'notifications', 
+        component: page('mainPage/notifications.vue') ,
+        children: [
+            { 
+              path: '/notifications/:id', 
+              name: 'notifications', 
+              component: page('mainPage/notificationTable/_id.vue') 
+            }
+          ]
+      },
+      { 
+        path: '/report', 
+        name: 'report', 
+        component: page('mainPage/report.vue') 
+      }
+    ]
+  },
+  { path: '/main_admin', name: 'main_admin', component: page('main_admin.vue') },
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },
   { path: '/register', name: 'register', component: page('auth/register.vue') },

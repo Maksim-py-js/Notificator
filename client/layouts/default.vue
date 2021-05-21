@@ -1,19 +1,16 @@
 <template>
-  <div class="layout">
-    <navbar />
-
-    <div class="container mt-4">
-      <nuxt />
-    </div>
+  <div class="default">
+  	<Nuxt/>
   </div>
 </template>
 
-<script>
-import Navbar from '~/components/Navbar'
-
-export default {
-  components: {
-    Navbar
-  }
-}
-</script>
+<style>
+	.default {
+		height: 100vh;
+		background: #F8F8F8;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+</style>
