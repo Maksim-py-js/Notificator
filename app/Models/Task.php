@@ -12,9 +12,12 @@ class Task extends Model
         return $this->hasMany('App\Models\TaskFile', 'task');
     }
     public function workplaces() {
-        return $this->hasMany('App\Models\TaskWorkplaceUser', 'workplace');
+        return $this->hasMany('App\Models\TaskWorkplaceUser', 'task');
     }
     public function users() {
-        return $this->hasMany('App\Models\TaskWorkplaceUser', 'user');
+        return $this->hasMany('App\Models\TaskWorkplaceUser', 'task');
+    }
+    public function shipping_times() {
+        return $this->hasMany('App\Models\ShippingTime', 'task');
     }
 }

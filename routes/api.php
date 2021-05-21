@@ -57,3 +57,5 @@ Route::apiResource('task_workplace_user', 'App\Http\Controllers\TaskWorkplaceUse
 
 Route::apiResource('groups', 'App\Http\Controllers\GroupsController');
 Route::apiResource('group_users', 'App\Http\Controllers\GroupUsersController');
+
+Route::apiResource('shipping_times', 'App\Http\Controllers\ShippingTimesController');

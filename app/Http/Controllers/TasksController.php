@@ -19,22 +19,35 @@ class TasksController extends Controller
         $tasks = Task::all();
         $data = [];
         foreach($tasks as $task) {
+            $arr_users = [];
             $users = [];
 
             $files = $task->files('task')->get();
             $data_users = $task->users('user')->get();
-            $data_workplaces = $task->workplaces('workplace')->get();
+            $data_workplaces = $task->workplaces('workplace')->get();            
+            $shipping_times = $task->shipping_times('task')->get();
 
             foreach($data_users as $data_user) {
                 $user = User::find($data_user->user);
-                if (!in_array($user, $users)) {                    
-                    array_push($users, $user);
-                }
+                if (!in_array($user, $arr_users)) {                    
+                    array_push($arr_users, $user);
+                }                
             }
             foreach($data_workplaces as $data_workplace) {
                 $user = User::find($data_workplace->id);
-                if (!in_array($user, $users)) {                    
-                    array_push($users, $user);
+                if (!in_array($user, $arr_users)) {                    
+                    array_push($arr_users, $user);
+                }
+            }
+            
+            foreach($arr_users as $user) {
+                foreach($shipping_times as $shipping_time) {
+                    if($user->id == $shipping_time->user) {
+                        array_push($users, compact(
+                            'user',
+                            'shipping_time'
+                        ));
+                    }
                 }
             }
 
@@ -79,22 +92,34 @@ class TasksController extends Controller
         $task = Task::find($id);
 
         $data = [];
+        $arr_users = [];
         $users = [];
 
         $files = $task->files('task')->get();
         $data_users = $task->users('user')->get();
-        $data_workplaces = $task->workplaces('workplace')->get();
+        $data_workplaces = $task->workplaces('workplace')->get();          
+        $shipping_times = $task->shipping_times('task')->get();
 
         foreach($data_users as $data_user) {
             $user = User::find($data_user->user);
-            if (!in_array($user, $users)) {                    
-                array_push($users, $user);
+            if (!in_array($user, $arr_users)) {                    
+                array_push($arr_users, $user);
             }
         }
         foreach($data_workplaces as $data_workplace) {
             $user = User::find($data_workplace->id);
-            if (!in_array($user, $users)) {                    
-                array_push($users, $user);
+            if (!in_array($user, $arr_users)) {                    
+                array_push($arr_users, $user);
+            }
+        }
+        foreach($arr_users as $user) {
+            foreach($shipping_times as $shipping_time) {
+                if($user->id == $shipping_time->user) {
+                    array_push($users, compact(
+                        'user',
+                        'shipping_time'
+                    ));
+                }
             }
         }
 
