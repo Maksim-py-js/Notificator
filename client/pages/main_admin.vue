@@ -50,7 +50,7 @@
 			<div class="main_admin__tableBorder">
 				<div>
 					<h3 class="main_admin__table_name">
-						Топшириқлар
+						Топ
 					</h3>
 					<b-table
 		                :items="moderators"
