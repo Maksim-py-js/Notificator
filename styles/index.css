@@ -17,7 +17,8 @@ button, button:focus {
   box-shadow: none; }
 
 img {
-  width: 100%; }
+  width: 100%;
+  vertical-align: inherit; }
 
 /* width */
 ::-webkit-scrollbar {
@@ -44,13 +45,13 @@ img {
   font-family: "Rubik";
   font-weight: 700; }
 
-.btn, .flex, .table__td, .main_admin__header, .main_admin__header-nav, .main_admin__data, .main_admin__tableBorder, .main_admin__tables_head, .main_admin__tables_nav, .main_admin__td_box, .main_admin__table_options, .main_admin__quantity_item, .main_admin__table_content, .main_admin__right_data, .moderators_modal__header, .moderators_modal__inputs, .moderators_modal__modals, .moderators_modal__footer, .moderators_modal__switch, .section__header, .section__form, .section__footer, .contact__header, .contact__inputs, .contact__footer, .contact__switch, .form__input_group, .form__footer, .header, .header__item, .assignments__tabels, .assignments__title_box, .assignments__card_top, .assignments__card_number, .assignments__card_footer, .assignments__file_btn, .assignments__card_date, .assignments .expired__table_item, .task-modal__view, .task-modal__inputs, .task-modal__input-box, .notifications__content, .contacts__head, .contacts__head_buttons, .contacts__cards_quantity, .contacts__group_head, .contacts__cards, .contacts__position, .contacts__phone, .contacts__cards_pagination {
+.btn, .flex, .table__td, .main_admin__header, .main_admin__header-nav, .main_admin__data, .main_admin__tableBorder, .main_admin__tables_head, .main_admin__tables_nav, .main_admin__td_box, .main_admin__table_options, .main_admin__quantity_item, .main_admin__table_content, .main_admin__right_data, .moderators_modal__header, .moderators_modal__inputs, .moderators_modal__modals, .moderators_modal__footer, .moderators_modal__switch, .section__header, .section__form, .section__footer, .contact__header, .contact__inputs, .contact__footer, .contact__switch, .form__input_group, .form__footer, .header, .header__item, .assignments__tabels, .assignments__title_box, .assignments__card_top, .assignments__card_number, .assignments__card_footer, .assignments__file_btn, .assignments__card_date, .assignments .expired__table_item, .task-modal__view, .task-modal__inputs, .task-modal__input-box, .task-modal__box, .task-modal__search, .notifications__content, .contacts__head, .contacts__head_buttons, .contacts__cards_quantity, .contacts__group_head, .contacts__cards, .contacts__position, .contacts__phone, .contacts__cards_pagination {
   display: flex; }
 
-.table__td, .main_admin__header, .main_admin__header-nav, .main_admin__data, .main_admin__tableBorder, .main_admin__tables_head, .main_admin__tables_nav, .main_admin__table_options, .main_admin__table_content, .moderators_modal__header, .moderators_modal__inputs, .moderators_modal__footer, .section__header, .section__form, .section__footer, .contact__header, .contact__inputs, .contact__footer, .form__footer, .header, .assignments__tabels, .assignments__card_top, .assignments__card_footer, .assignments .expired__table_item, .notifications__content, .contacts__head, .contacts__cards, .contacts__phone {
+.table__td, .main_admin__header, .main_admin__header-nav, .main_admin__data, .main_admin__tableBorder, .main_admin__tables_head, .main_admin__tables_nav, .main_admin__table_options, .main_admin__table_content, .moderators_modal__header, .moderators_modal__inputs, .moderators_modal__footer, .section__header, .section__form, .section__footer, .contact__header, .contact__inputs, .contact__footer, .form__footer, .header, .assignments__tabels, .assignments__card_top, .assignments__card_footer, .assignments .expired__table_item, .task-modal__box, .task-modal__search, .notifications__content, .contacts__head, .contacts__cards, .contacts__phone {
   justify-content: space-between; }
 
-.btn, .flex, .table__td, .main_admin__header, .main_admin__header-nav, .main_admin__data, .main_admin__tables_head, .main_admin__tables_nav, .main_admin__table_tr, .main_admin__user_table_tr, .main_admin__td_box, .main_admin__table_options, .main_admin__quantity_item, .main_admin__table_content, .main_admin__right_data, .moderators_modal__header, .moderators_modal__inputs, .moderators_modal__modals, .moderators_modal__footer, .moderators_modal__switch, .section__header, .section__form, .section__footer, .contact__header, .contact__footer, .contact__switch, .form__input_group, .form__footer, .header, .header__item, .assignments__title_box, .assignments__card_top, .assignments__card_number, .assignments__card_footer, .assignments__file_btn, .assignments__card_date, .assignments .expired__table_item, .task-modal__view, .task-modal__inputs, .task-modal__input-box, .contacts__head, .contacts__head_buttons, .contacts__cards_quantity, .contacts__group_head, .contacts__cards, .contacts__position, .contacts__cards_pagination {
+.btn, .flex, .table__td, .main_admin__header, .main_admin__header-nav, .main_admin__data, .main_admin__tables_head, .main_admin__tables_nav, .main_admin__table_tr, .main_admin__user_table_tr, .main_admin__td_box, .main_admin__table_options, .main_admin__quantity_item, .main_admin__table_content, .main_admin__right_data, .moderators_modal__header, .moderators_modal__inputs, .moderators_modal__modals, .moderators_modal__footer, .moderators_modal__switch, .section__header, .section__form, .section__footer, .contact__header, .contact__footer, .contact__switch, .form__input_group, .form__footer, .header, .header__item, .assignments__title_box, .assignments__card_top, .assignments__card_number, .assignments__card_footer, .assignments__file_btn, .assignments__card_date, .assignments .expired__table_item, .task-modal__view, .task-modal__inputs, .task-modal__input-box, .task-modal__search, .contacts__head, .contacts__head_buttons, .contacts__cards_quantity, .contacts__group_head, .contacts__cards, .contacts__position, .contacts__cards_pagination {
   align-items: center; }
 
 .btn {
@@ -1449,6 +1450,7 @@ img {
   display: inline-block;
   vertical-align: middle;
   padding: 0.86735vw 1.12245vw 0.86735vw 0.86735vw;
+  margin: 0 1.02041vw 1.02041vw 0;
   background: #E3E3E3;
   border-radius: 0.5102vw;
   position: relative;
@@ -1466,14 +1468,15 @@ img {
   box-sizing: border-box;
   border-radius: 5.10204vw;
   position: absolute;
-  top: 0%;
-  right: 0%;
+  top: -0.56122vw;
+  right: -0.56122vw;
   z-index: 10;
-  width: 1.02041vw;
-  height: 1.02041vw;
+  width: 1.07143vw;
+  height: 1.07143vw;
   padding: 0.20408vw; }
 
 .assignments .delFile-icon {
+  height: 0.61224vw;
   width: 0.61224vw;
   font-size: 0; }
 
@@ -1517,7 +1520,8 @@ img {
   color: #7F7F84;
   font-size: 1.83673vw;
   line-height: 2.19388vw;
-  margin-bottom: 0.86735vw; }
+  margin-bottom: 0.86735vw;
+  padding: 1.07143vw 0 0.30612vw; }
 
 .task-modal__name {
   background: #FDFCFC;
@@ -1569,8 +1573,29 @@ img {
   font-size: 1.32653vw;
   line-height: 1.58163vw; }
 
-.task-modal__data {
+.task-modal__box {
+  align-items: flex-start;
+  margin-top: 2.09184vw; }
+
+.task-modal__editor {
   width: 46.17347vw; }
+
+.task-modal__search {
+  width: 100%;
+  background: #FFFCFC;
+  border: 0.10204vw solid #DADCDF;
+  border-radius: 0.40816vw;
+  padding: 1.02041vw 0.91837vw 1.02041vw 1.63265vw; }
+
+.task-modal__erase-icon {
+  width: 1.63265vw;
+  font-size: 0; }
+
+.task-modal__data {
+  width: 35.96939vw; }
+
+.file {
+  margin-bottom: 0.91837vw; }
 
 .file__input {
   display: none; }

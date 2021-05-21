@@ -278,7 +278,7 @@
 			<div 
 				class="task-modal__content"
     			:active="`${taskModal}`" 
-			>
+			    >
 				<h3 class="task-modal__title">Топшириқ яратиш</h3>
 				<div class="task-modal__inputs">
 					<input 
@@ -314,8 +314,8 @@
 						>
 					</div>
 				</div>
-				<div class="flex">
-					<div class="task-modal__data">
+				<div class="task-modal__box flex">
+					<div class="task-modal__editor">
 						<h3 class="task-modal__title">Топшириқ матни</h3>
 						<div class="task-modal__text-field">
 							<tiptap-vuetify
@@ -331,7 +331,7 @@
 								type="file" 
 								class="file__input"
 								ref="fileInput"
-								@input="onSelectFile"
+								@change="onSelectFile"
 							>
 							<span class="file__text">
 								<div class="file__icon">
@@ -341,15 +341,33 @@
 							</span>
 						</div>
 						<ul>
-							<li class="selectedFile">
-								<span>Баён бўйича... .doc</span>
+							<li 
+								class="selectedFile"
+								v-for="(file, index) in chooseFiles"
+								:key="index"
+							>
+								<span>{{file.name}}</span>
 								<button class="delFile">
-									<div class="delFile-icon">
-										<img src="@/assets/images/svg/closeModal.svg" alt="delete">
+									<div @click="delFile(index)" class="delFile-icon">
+										<img src="@/assets/images/svg/deleteItem.svg" alt="delete">
 									</div>
 								</button>
 							</li>
 						</ul>
+					</div>
+					<div class="task-modal__data">
+						<div class="task-modal__search">
+							<input 
+								type="text" 
+								class="task-modal__search-input"
+								placeholder="Излаш" 
+							>
+							<button class="task-modal__erase">
+								<div class="task-modal__erase-icon">
+									<img src="@/assets/images/svg/deleteItem.svg" alt="delete">
+								</div>
+							</button>
+						</div>		
 					</div>
 				</div>
 			</div>
@@ -1130,12 +1148,15 @@
 			},
 
 			chooseFile () {
+				console.log('--------------------1');
               this.$refs.fileInput.click();
-              // console.log(this.developer.logo);
+              console.log(this.$refs.fileInput);
             },
             onSelectFile () {
+            	console.log('--------------------2');
                 const input = this.$refs.fileInput;
                 const files = input.files;
+                console.log(input);
 
                 if (files && files[0]) {
                     this.chooseFiles.push(files[0]);
@@ -1144,6 +1165,11 @@
                     reader.readAsDataURL(files[0]);
                     this.$emit('input', files[0]);
                 }
+                console.log(this.chooseFiles);
+            },
+
+            delFile(index) {
+            	this.chooseFiles.splice(index, 1);
             }
 		}
 	}

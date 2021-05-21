@@ -43,6 +43,7 @@ button, button:focus {
 
 img {
 	width: 100%;
+	vertical-align: inherit;
 }
 
 /* width */
@@ -1754,6 +1755,7 @@ img {
 		display: inline-block;
 		vertical-align: middle;
 		padding: vwSize(17) vwSize(22) vwSize(17) vwSize(17);
+		margin: 0 vwSize(20) vwSize(20) 0;
 		background: #E3E3E3;
 		border-radius: vwSize(10);
 		position: relative;
@@ -1773,14 +1775,15 @@ img {
 		border-radius: vwSize(100);
 
 		position: absolute;
-		top: 0%;
-		right: 0%;
+	    top: vwSize(-11);
+    	right: vwSize(-11);
 		z-index: 10;
-		width: vwSize(20);
-		height: vwSize(20);
+		width: vwSize(21);
+		height: vwSize(21);
 		padding: vwSize(4);
 	}
 	.delFile-icon {
+		height: vwSize(12);
 		width: vwSize(12);
 		font-size: 0;
 	}
@@ -1836,6 +1839,7 @@ img {
 		font-size: vwSize(36);
 		line-height: vwSize(43);
 		margin-bottom: vwSize(17);
+		padding: vwSize(21) 0 vwSize(6);
 	}
 	&__inputs {
 		@extend %d-flex;
@@ -1896,14 +1900,39 @@ img {
 		font-size: vwSize(26);
 		line-height: vwSize(31);
 	}
-	&__data {
+	&__box {
+		@extend %d-flex;
+		@extend %jc-sb;
+		align-items: flex-start;
+
+		margin-top: vwSize(41);
+	}
+	&__editor {
 		width: vwSize(905);
+	}
+	&__search {
+		@extend %d-flex;
+		@extend %ai-c;
+		@extend %jc-sb;
+		width: 100%;
+		background: #FFFCFC;
+		border: vwSize(2) solid #DADCDF;
+		border-radius: vwSize(8);
+		padding: vwSize(20) vwSize(18) vwSize(20) vwSize(32);
+	}
+	&__erase-icon {
+		width: vwSize(32);
+		font-size: 0;
+	}
+	&__data {
+		width: vwSize(705);
 	}
 	// &__text-field {
 	// 	min-height: vwSize(1000);
 	// }
 }
 .file {
+	margin-bottom: vwSize(18);
 	&__input {
 		display: none;
 	}
