@@ -19,11 +19,11 @@ class TasksController extends Controller
         $tasks = Task::all();
         $data = [];
         foreach($tasks as $task) {
-            $files = $task->files('task')->get();
+            $users = [];
 
+            $files = $task->files('task')->get();
             $data_users = $task->users('user')->get();
             $data_workplaces = $task->workplaces('workplace')->get();
-            $users = [];
 
             foreach($data_users as $data_user) {
                 $user = User::find($data_user->user);
@@ -56,12 +56,14 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $task = new Task();
+        
         $task->title = $request['title'];
         $task->text = $request['text'];
         $task->term = $request['term'];
         $task->day = $request['day'];
         $task->time = $request['time'];
         $task->state = $request['state'];
+
         $task->save();
         return $task;
     }
@@ -75,12 +77,33 @@ class TasksController extends Controller
     public function show($id)
     {
         $task = Task::find($id);
+
         $data = [];
+        $users = [];
+
         $files = $task->files('task')->get();
+        $data_users = $task->users('user')->get();
+        $data_workplaces = $task->workplaces('workplace')->get();
+
+        foreach($data_users as $data_user) {
+            $user = User::find($data_user->user);
+            if (!in_array($user, $users)) {                    
+                array_push($users, $user);
+            }
+        }
+        foreach($data_workplaces as $data_workplace) {
+            $user = User::find($data_workplace->id);
+            if (!in_array($user, $users)) {                    
+                array_push($users, $user);
+            }
+        }
+
         array_push($data, compact(
             'task',
-            'files'
-        ));        
+            'files',
+            'users'
+        ));   
+
         return json_encode($data);
     }
 

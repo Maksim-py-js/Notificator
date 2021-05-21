@@ -27,19 +27,18 @@ class UserController extends Controller
         $users = User::all();
         $data = [];
         foreach ($users as $user) {
+            $tasks = [];
+            $groups = [];
+
             $workplace = Workplace::find($user->work_place);
             $job = Job::find($user->job);
-
             $userGroups = $user->groups()->get();
+            $data_tasks = $user->tasks('user')->get();
 
-            $groups = [];
             foreach($userGroups as $userGroup) {
                 $userGroup = Group::find($userGroup->group);
                 array_push($groups, $userGroup);
             }
-
-            $tasks = [];
-            $data_tasks = $user->tasks('user')->get();
             foreach($data_tasks as $data_task) {
                 $task = Task::find($data_task->user);
                 array_push($tasks, $task);
@@ -94,12 +93,28 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $data = [];
+        $tasks = [];
+        $groups = [];
+
         $workplace = Workplace::find($user->work_place);
         $job = Job::find($user->job);
+        $userGroups = $user->groups()->get();
+        $data_tasks = $user->tasks('user')->get();
+
+        foreach($userGroups as $userGroup) {
+            $userGroup = Group::find($userGroup->group);
+            array_push($groups, $userGroup);
+        }
+        foreach($data_tasks as $data_task) {
+            $task = Task::find($data_task->user);
+            array_push($tasks, $task);
+        }
         array_push($data, compact(
             'user',
             'workplace',
-            'job'
+            'job',
+            'groups',
+            'tasks'
         ));
         return json_encode($data);
     }
