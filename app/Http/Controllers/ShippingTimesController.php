@@ -35,6 +35,8 @@ class ShippingTimesController extends Controller
         $shippingTime->sent_sms = $request['sent_sms'];
         $shippingTime->delivered_sms = $request['delivered_sms'];
 
+        $shippingTime->state = $request['state'];
+
         $shippingTime->save();
         return $shippingTime;
     }
@@ -68,6 +70,8 @@ class ShippingTimesController extends Controller
         $shippingTime->viewed_app = $request['viewed_app'];
         $shippingTime->sent_sms = $request['sent_sms'];
         $shippingTime->delivered_sms = $request['delivered_sms'];
+
+        $shippingTime->state = $request['state'];
 
         $shippingTime->save();
         return $shippingTime;

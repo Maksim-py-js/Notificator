@@ -24,6 +24,9 @@ class CreateShippingTimesTable extends Migration
             $table->string('sent_sms')->nullable();
             $table->string('delivered_sms')->nullable();
 
+            $table->boolean('state')->default(0);
+
+
             $table->timestamps();
         });
     }

@@ -40,7 +40,7 @@ class UserController extends Controller
                 array_push($groups, $userGroup);
             }
             foreach($data_tasks as $data_task) {
-                $task = Task::find($data_task->user);
+                $task = Task::find($data_task->task);
                 array_push($tasks, $task);
             }
 
